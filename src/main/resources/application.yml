@@ -1,3 +1,11 @@
 micronaut:
   application:
     name: pocKotlinMicronautCrud
+datasources:
+  default:
+    url: ${DB_URL:`jdbc:postgresql://localhost:5432/poc_micronaut`}
+    driverClassName: org.postgresql.Driver
+    username: ${DB_USER:postgres}
+    password: ${DB_PASSWORD:postgres}
+
+jpa.default.properties.hibernate.hbm2ddl.auto: update

@@ -5,4 +5,5 @@ import br.com.gtresm.application.domain.Autor
 interface PersistencePort {
     fun createAutor(autor: Autor): Autor
     fun getAutorByEmail(email: String): Any
+    fun updateAutor(id: Long, autor: Autor): Autor
 }

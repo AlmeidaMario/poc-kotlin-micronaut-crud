@@ -15,4 +15,8 @@ class AutorService(
 
     override fun getAutorByEmail(email: String): Any =
         persistencePort.getAutorByEmail(email)
+
+    override fun updateAutor(id: Long, autor: Autor): Autor {
+        TODO("Not yet implemented")
+    }
 }

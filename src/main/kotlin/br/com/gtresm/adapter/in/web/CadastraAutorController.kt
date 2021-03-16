@@ -2,7 +2,7 @@ package br.com.gtresm.adapter.`in`.web
 
 import br.com.gtresm.adapter.`in`.web.extensions.toAutorDomain
 import br.com.gtresm.adapter.`in`.web.extensions.toNovoAutorResourceRequest
-import br.com.gtresm.adapter.`in`.web.resources.NovoAutorResourceRequest
+import br.com.gtresm.adapter.`in`.web.resources.AutorResourceRequest
 import br.com.gtresm.application.port.`in`.AutorUseCase
 import io.micronaut.http.annotation.*
 import io.micronaut.validation.Validated
@@ -16,11 +16,20 @@ class CadastraAutorController(
 ) {
 
     @Post("/")
-    fun cadastra(@Body @Valid request: NovoAutorResourceRequest) =
+    fun cadastra(@Body @Valid request: AutorResourceRequest) =
         autorUseCase.createAutor(request.toAutorDomain()).toNovoAutorResourceRequest()
 
     @Get
     @Transactional
     fun getAutor(@QueryValue(defaultValue = "") email: String) =
         autorUseCase.getAutorByEmail(email)
+
+    @Put("/{id}")
+    fun atualiza(
+        @Body @Valid request: AutorResourceRequest,
+        @PathVariable id: Long
+    ){
+
+    }
+
 }

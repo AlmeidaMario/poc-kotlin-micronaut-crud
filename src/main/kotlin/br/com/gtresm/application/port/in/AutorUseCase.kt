@@ -6,4 +6,5 @@ interface AutorUseCase{
 
     fun createAutor(autor: Autor): Autor
     fun getAutorByEmail(email:String): Any
+    fun updateAutor(id: Long, autor: Autor): Autor
 }

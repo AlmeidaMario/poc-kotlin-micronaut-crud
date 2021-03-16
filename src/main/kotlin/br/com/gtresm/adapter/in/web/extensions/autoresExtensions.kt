@@ -1,15 +1,15 @@
 package br.com.gtresm.adapter.`in`.web.extensions
 
-import br.com.gtresm.adapter.`in`.web.resources.NovoAutorResourceRequest
+import br.com.gtresm.adapter.`in`.web.resources.AutorResourceRequest
 import br.com.gtresm.application.domain.Autor
 
-fun NovoAutorResourceRequest.toAutorDomain(): Autor = Autor(
+fun AutorResourceRequest.toAutorDomain(): Autor = Autor(
     nome = this.nome,
     email = this.email,
     descricao = this.descricao
 )
 
-fun Autor.toNovoAutorResourceRequest(): NovoAutorResourceRequest = NovoAutorResourceRequest(
+fun Autor.toNovoAutorResourceRequest(): AutorResourceRequest = AutorResourceRequest(
     nome = this.nome,
     email = this.email,
     descricao = this.descricao

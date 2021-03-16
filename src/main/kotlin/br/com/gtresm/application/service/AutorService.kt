@@ -2,7 +2,7 @@ package br.com.gtresm.application.service
 
 import br.com.gtresm.application.domain.Autor
 import br.com.gtresm.application.port.`in`.AutorUseCase
-import br.com.gtresm.application.port.out.PersistencePort
+import br.com.gtresm.application.port.out_.PersistencePort
 import javax.inject.Singleton
 
 @Singleton

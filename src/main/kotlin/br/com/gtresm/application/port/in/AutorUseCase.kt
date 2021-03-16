@@ -1,10 +1,11 @@
 package br.com.gtresm.application.port.`in`
 
-import br.com.gtresm.application.domain.Autor
+import br.com.gtresm.application.domain.Author
 
 interface AutorUseCase{
 
-    fun createAutor(autor: Autor): Autor
+    fun createAutor(author: Author): Author
     fun getAutorByEmail(email:String): Any
-    fun updateAutor(id: Long, autor: Autor): Autor
+    fun listAutor(): List<Author>
+    fun updateAutor(author: Author): Author
 }

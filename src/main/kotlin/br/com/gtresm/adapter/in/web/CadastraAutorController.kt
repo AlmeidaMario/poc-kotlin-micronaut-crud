@@ -16,20 +16,23 @@ class CadastraAutorController(
 ) {
 
     @Post("/")
-    fun cadastra(@Body @Valid request: AutorResourceRequest) =
-        autorUseCase.createAutor(request.toAutorDomain()).toNovoAutorResourceRequest()
+    fun create(
+        @Body @Valid request: AutorResourceRequest
+    ) = autorUseCase.createAutor(request.toAutorDomain()).toNovoAutorResourceRequest()
 
     @Get
     @Transactional
-    fun getAutor(@QueryValue(defaultValue = "") email: String) =
-        autorUseCase.getAutorByEmail(email)
+    fun getAutor(
+        @QueryValue(defaultValue = "") email: String
+    ) = autorUseCase.getAutorByEmail(email)
+
+    @Get("/all")
+    @Transactional
+    fun listAutor() = autorUseCase.listAutor()
 
     @Put("/{id}")
     fun atualiza(
-        @Body @Valid request: AutorResourceRequest,
-        @PathVariable id: Long
-    ){
-
-    }
+        @Body @Valid authorRequest: AutorResourceRequest,
+    ) = autorUseCase.updateAutor(authorRequest.toAutorDomain()).toNovoAutorResourceRequest()
 
 }

@@ -2,7 +2,7 @@ package br.com.gtresm.adapter.`in`.web
 
 import br.com.gtresm.adapter.`in`.web.extensions.toAutorDomain
 import br.com.gtresm.adapter.`in`.web.extensions.toNovoAutorResourceRequest
-import br.com.gtresm.adapter.`in`.web.resources.AutorResourceRequest
+import br.com.gtresm.adapter.`in`.web.resources.AuthorResourceRequest
 import br.com.gtresm.application.port.`in`.AutorUseCase
 import io.micronaut.http.annotation.*
 import io.micronaut.validation.Validated
@@ -17,7 +17,7 @@ class AutorController(
 
     @Post("/")
     fun create(
-        @Body @Valid request: AutorResourceRequest
+        @Body @Valid request: AuthorResourceRequest
     ) = autorUseCase.createAutor(request.toAutorDomain()).toNovoAutorResourceRequest()
 
     @Get
@@ -32,7 +32,7 @@ class AutorController(
 
     @Put("/{id}")
     fun atualiza(
-        @Body @Valid authorRequest: AutorResourceRequest,
+        @Body @Valid authorRequest: AuthorResourceRequest,
     ) = autorUseCase.updateAutor(authorRequest.toAutorDomain()).toNovoAutorResourceRequest()
 
 }

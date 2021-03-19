@@ -2,7 +2,7 @@ package br.com.gtresm.application.port.`in`
 
 import br.com.gtresm.application.domain.Author
 
-interface AutorUseCase{
+interface AuthorUseCase{
 
     fun createAutor(author: Author): Author
     fun getAutorByEmail(email:String): Any

@@ -1,38 +1,39 @@
 package br.com.gtresm.adapter.`in`.web
 
-import br.com.gtresm.adapter.`in`.web.extensions.toAutorDomain
-import br.com.gtresm.adapter.`in`.web.extensions.toNovoAutorResourceRequest
+import br.com.gtresm.adapter.`in`.web.extensions.toAuthorDomain
+import br.com.gtresm.adapter.`in`.web.extensions.toAuthorResourceResponse
 import br.com.gtresm.adapter.`in`.web.resources.AuthorResourceRequest
-import br.com.gtresm.application.port.`in`.AutorUseCase
+import br.com.gtresm.adapter.`in`.web.resources.AuthorUpdateResourceRequest
+import br.com.gtresm.application.port.`in`.AuthorUseCase
 import io.micronaut.http.annotation.*
 import io.micronaut.validation.Validated
 import javax.transaction.Transactional
 import javax.validation.Valid
 
 @Validated
-@Controller("/autores")
+@Controller("/authors")
 class AutorController(
-    val autorUseCase: AutorUseCase
+    val authorUseCase: AuthorUseCase
 ) {
 
     @Post("/")
-    fun create(
+    fun createAuthor(
         @Body @Valid request: AuthorResourceRequest
-    ) = autorUseCase.createAutor(request.toAutorDomain()).toNovoAutorResourceRequest()
+    ) = authorUseCase.createAutor(request.toAuthorDomain()).toAuthorResourceResponse()
 
     @Get
     @Transactional
-    fun getAutor(
+    fun getAuthor(
         @QueryValue(defaultValue = "") email: String
-    ) = autorUseCase.getAutorByEmail(email)
+    ) = authorUseCase.getAutorByEmail(email)
 
     @Get("/all")
     @Transactional
-    fun listAutor() = autorUseCase.listAutor()
+    fun listAuthor() = authorUseCase.listAutor()
 
     @Put("/{id}")
-    fun atualiza(
-        @Body @Valid authorRequest: AuthorResourceRequest,
-    ) = autorUseCase.updateAutor(authorRequest.toAutorDomain()).toNovoAutorResourceRequest()
+    fun updateAuthor(
+        @Body @Valid authorRequestUpdate: AuthorUpdateResourceRequest,
+    ) = authorUseCase.updateAutor(authorRequestUpdate.toAuthorDomain()).toAuthorResourceResponse()
 
 }

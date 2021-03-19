@@ -26,10 +26,9 @@ class PersistenceAdapter(
         autorRepository.findAll().toAuthorDomainList()
 
     override fun updateAutor(author: Author): Author {
-//        val possibleAuthor = author.id?.let {
-//            autorRepository.findById(it)
-//        }
-//        possibleAuthor?.get()
-        return author
+        return when(autorRepository.findById(author.id!!).isEmpty){
+            true -> throw NotFoundException("Autor Not Found")
+            false  -> autorRepository.update(author.toAuthorEntity()).toAuthorDomain()
+        }
     }
 }

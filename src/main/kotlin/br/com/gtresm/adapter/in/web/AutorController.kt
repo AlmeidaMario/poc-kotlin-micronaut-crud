@@ -11,7 +11,7 @@ import javax.validation.Valid
 
 @Validated
 @Controller("/autores")
-class CadastraAutorController(
+class AutorController(
     val autorUseCase: AutorUseCase
 ) {
 
